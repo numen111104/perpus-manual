@@ -1,0 +1,15 @@
+{
+    "name": "numenide/perpus-manual",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "numen111104",
+            "email": "numannasyarmz11@gmail.com"
+        }
+    ],
+    "require": {}
+}
