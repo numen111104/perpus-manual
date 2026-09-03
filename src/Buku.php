@@ -39,4 +39,46 @@ class Buku
             [$judul, $penulis, $tahun, $stok]
         ); // mengeksekusi query sekaligus menjaga query dari injection
     }
+
+    public function ubah(
+        int $id,
+        string $judul,
+        string $penulis,
+        int $tahun,
+        int $stok
+    ) {
+        $stmt = $this->db->prepare(
+            "UPDATE buku SET judul = ?, penulis = ?, tahun = ?, stok = ? where id = ?"
+        ); // menyiapkan query untuk edit atau ubah
+
+        $stmt->execute([
+            $judul,
+            $penulis,
+            $tahun,
+            $stok,
+            $id
+        ]);
+    }
+
+    public function cariBuku(int $id)
+    {
+        $stmt = $this->db->prepare(
+            "SELECT * FROM buku where id = ?"
+        );
+
+        $stmt->execute([$id]);
+
+        $buku = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $buku ?: null;
+    }
+
+    public function hapus(int $id)
+    {
+        $stmt = $this->db->prepare(
+            "DELETE FROM buku where id = ?"
+        );
+
+        $stmt->execute([$id]);
+    }
 }

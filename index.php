@@ -35,6 +35,7 @@ $semuaBuku = $buku->semua();
     <h1>Perpustakaan</h1>
     <p>
         <a href="tambah.php">Tambah</a>
+        <a href="anggota-index.php">Anggota</a>
     </p>
     <table border="1" cellpading="8">
         <thead>
@@ -44,6 +45,7 @@ $semuaBuku = $buku->semua();
                 <th>Penulis</th>
                 <th>Tahun</th>
                 <th>Stok</th>
+                <th>Aksi</th>
             </tr>
         </thead>
 
@@ -55,6 +57,10 @@ $semuaBuku = $buku->semua();
                     <td><?= $buku['penulis'] ?></td>
                     <td><?= $buku['tahun'] ?></td>
                     <td><?= $buku['stok'] ?></td>
+                    <td>
+                        <a href="edit.php?id=<?= $buku['id'] ?>&judul=<?= $buku['judul'] ?>"><button type="button">Edit</button></a>
+                        <a href="hapus.php?id=<?= $buku['id'] ?>&judul=<?= $buku['judul'] ?>"><button type="button">Hapus</button></a>
+                    </td>
                 </tr>
             <?php endforeach ?>
         </tbody>
